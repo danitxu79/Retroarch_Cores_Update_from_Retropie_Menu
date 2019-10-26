@@ -63,6 +63,50 @@ pip install urllib3
 
 echo -e " ${LRED}--${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
 sleep 1
+ 
 
+wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/coresupdate.sh"
 
-wget -N -q --show-progress 
+wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/coresupdate.py"
+
+wget -N -q --show-progress "https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/raw/master/coresupdate.png"
+
+mv coresupdate.sh $RPMENU/coresupdate.sh
+mv coresupdate.py $RPMENU/coresupdate.py
+mv coresupdate.png $RPMENU/icons/coresupdate.png
+
+echo -e " ${LRED}-${NC}${WHITE} Download complete.${NC}"
+sleep 1
+
+cd $RP/roms/retropie
+
+echo -e " ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
+sleep 1
+
+sed -i.bak '/</gameList>/ {
+i\<game>
+a\  <path>./core-fetch.sh</path>
+a\  <name>Cores and Assets update</name>
+a\  <desc>Update all cores and assets or retroach.</desc>
+a\  <image>/home/pi/RetroPie/retropiemenu/icons/core-fetch.png</image>
+c\</game>
+}'
+
+echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
+sleep 1
+
+########################
+########################
+
+########################
+##       Restart      ##
+########################
+	
+	echo -e " ${LRED}[${NC}${LGREEN} Restart System ${NC}${LRED}]${NC}"
+	echo -e " ${LRED}-${NC}${WHITE} To finish, we need to reboot.${NC}${ORANGE}\n"
+	read -n 1 -s -r -p " Press any key to Restart."
+	echo -e "${NC}\n"
+	(rm -f $SCRIPTPATH; echo raspberry | sudo -S reboot)
+	
+########################
+########################
