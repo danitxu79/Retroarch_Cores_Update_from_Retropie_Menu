@@ -96,11 +96,11 @@ sleep 1
 
 sed -i.bak '{
 2a\<game> 
-   <path>./coresupdate.sh</path>
-   <name>Retroarch Cores Update</name>
-   <desc>Update all retroarch cores from Retropie menu.</desc>
-   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
- </game>
+a\   <path>./coresupdate.sh</path>
+a\   <name>Retroarch Cores Update</name>
+a\   <desc>Update all retroarch cores from Retropie menu.</desc>
+a\   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
+a\ </game>
 }' $GAMELIST
 
 
