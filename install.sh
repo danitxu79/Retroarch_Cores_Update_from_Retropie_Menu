@@ -93,8 +93,8 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/$SENAL/c señal 1' $GAMELIST
-sed -i.bak '3r $HOME/gamelistmodif.xml' $GAMELIST
+sed -i.bak '/$SENAL/r que ya ' $GAMELIST
+sed -i.bak '2a\ joder Cabron ' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
