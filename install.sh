@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.4${NC}${LRED}   #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.5${NC}${LRED}   #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -37,7 +37,7 @@ RPMENU="$RP/retropiemenu"
 RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
-SENAL='gameList'
+SENAL='</gameList>'
 MODIFICACION="$HOME/gamelistmodif.xml"
 SCRIPTPATH=$(realpath $0)
 
@@ -93,7 +93,9 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/$SENAL/c $MODIFICACION' $GAMELIST
+sed -i.bak '/$SENAL/c señal 1' $GAMELIST
+sed -i.bak '3r gamelistmodif.xml' $GAMELIST
+
 rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
