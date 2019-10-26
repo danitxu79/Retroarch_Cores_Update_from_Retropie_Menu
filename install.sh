@@ -35,7 +35,7 @@ RPMENU="$RP/retropiemenu"
 RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
-SENAL='</gameList>'
+SENAL='/gameList'
 
 SCRIPTPATH=$(realpath $0)
 
