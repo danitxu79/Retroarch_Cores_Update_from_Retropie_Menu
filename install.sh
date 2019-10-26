@@ -93,13 +93,13 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak  /$SENAL/'que ya' $GAMELIST
+sed -i.bak  '/$SENAL/ i\que ya' $GAMELIST
 echo "feo"
 sed -i.bak '2a\ joder Cabron ' $GAMELIST
 echo "mas"
 sed -i.bak '/<gameList>/joder Cabron abajo ' $GAMELIST
 echo "speed"
-sed -i.bak '/esthemes.rp/ i\ joder Cabron arriba ' $GAMELIST
+sed -i.bak '/EOF/ i\ joder Cabron arriba 2 ' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
