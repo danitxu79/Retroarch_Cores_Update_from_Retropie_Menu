@@ -37,7 +37,7 @@ RPMENU="$RP/retropiemenu"
 RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
-SENAL='/gameList'
+SENAL='gameList'
 MODIFICACION="$HOME/gamelistmodif.xml"
 SCRIPTPATH=$(realpath $0)
 
@@ -93,7 +93,7 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/gameList/r $MODIFICACION' $GAMELIST
+sed -i.bak '/$SENAL/r $MODIFICACION' $GAMELIST
 rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
