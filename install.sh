@@ -85,9 +85,11 @@ cd $RP/roms/retropie
 echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
-sed -i.bak '/$SENAL/{
-r gamelistmodif.xml
-d}' $GAMELIST
+#sed -i.bak '/$SENAL/{
+#r gamelistmodif.xml
+#d}' $GAMELIST
+
+sed -i.bak '2a/ gamelistmodif.xml' $GAMELIST
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
