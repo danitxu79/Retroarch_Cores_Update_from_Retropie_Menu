@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.11${NC}${LRED}   #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.12${NC}${LRED}   #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -93,13 +93,13 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/$SENAL/r que ya ' $GAMELIST
+sed -i.bak  $SENAL 'que ya' $GAMELIST
 echo "feo"
 sed -i.bak '2a\ joder Cabron ' $GAMELIST
 echo "mas"
-sed -i.bak '/<//gameList>/joder Cabron abajo ' $GAMELIST
+sed -i.bak '/<*/gameList>/joder Cabron abajo ' $GAMELIST
 echo "speed"
-sed -i.bak '/esthemes.rp/joder Cabron arriba ' $GAMELIST
+sed -i.bak '/esthemes.rp/ i\ joder Cabron arriba ' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
