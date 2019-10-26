@@ -1,7 +1,7 @@
 #!/bin/bash 
 #####################################################################
 #Project		:	Retroarch cores update
-#Version		:	0.1
+#Version		:	0.3
 #Git			:      https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu
 #####################################################################
 #Script Name	:	install.sh
@@ -37,8 +37,6 @@ RPMENU="$RP/retropiemenu"
 RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
-SENAL='</gameList>'
-MODIFICACION="$HOME/gamelistmodif.xml"
 
 SCRIPTPATH=$(realpath $0)
 
@@ -76,8 +74,6 @@ wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarc
 
 wget -N -q --show-progress "https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/raw/master/coresupdate.png"
 
-wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/gamelistmodif.xml"
-
 mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
@@ -102,19 +98,17 @@ ifexist=`cat /tmp/templist.xml |grep CoresUpdater |wc -l`
 if [[ ${ifexist} > 0 ]]; then 
 		echo "already in gamelist.xml" > /tmp/exists
 else
-	echo "	<game>" >> /tmp/templist.xml
+	echo " <game>" >> /tmp/templist.xml
     echo "      <path>./coresupdate.sh</path>" >> /tmp/templist.xml
     echo "      <name>Retroarch Cores Updater</name>" >> /tmp/templist.xml
     echo "      <desc>Update all cores of Retroarch from Retropie menu</desc>" >> /tmp/templist.xml
     echo "      <image>./icons/coresupdate.png</image>" >> /tmp/templist.xml
     echo "      <playcount>1</playcount>" >> /tmp/templist.xml
     echo "      <lastplayed></lastplayed>" >> /tmp/templist.xml
-    echo "  </game>" >> /tmp/templist.xml
+    echo "    </game>" >> /tmp/templist.xml
     echo "</gameList>" >> /tmp/templist.xml
     cp /tmp/templist.xml ~/RetroPie/retropiemenu/gamelist.xml
 fi
-
-rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
@@ -130,7 +124,7 @@ sleep 1
 	echo -e " ${LRED}-${NC}${WHITE} To finish, we need to reboot.${NC}${ORANGE}\n"
 	read -n 1 -s -r -p " Press any key to Restart."
 	echo -e "${NC}\n"
-	(rm -f $SCRIPTPATH; echo raspberry | sudo -S reboote)
+	(rm -f $SCRIPTPATH; echo raspberry | sudo -S reboot)
 	
 ########################
 ########################
