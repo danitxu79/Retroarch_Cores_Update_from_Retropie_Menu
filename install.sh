@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.18${NC}${LRED}   #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.19${NC}${LRED}   #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -94,14 +94,7 @@ sleep 1
 #d}' $GAMELIST
 
 
-sed -i.bak '{
-2a\<game> 
-a\   <path>./coresupdate.sh</path>
-a\   <name>Retroarch Cores Update</name>
-a\   <desc>Update all retroarch cores from Retropie menu.</desc>
-a\   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
-a\ </game>
-}' $GAMELIST
+sed -i.bak '2r $gamelistmodif' $GAMELIST
 
 
 rm $HOME/gamelistmodif.xml
