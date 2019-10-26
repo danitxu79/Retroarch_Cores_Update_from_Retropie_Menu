@@ -11,6 +11,8 @@
 #				:	chmod +x install.sh
 #				:	bash install.sh
 #Author       	:	Daniel Serrano
+#Script based 	:	Luis Torres aka Naprosnia
+#Git			:	https://github.com/Naprosnia/RetroPie_BGM_Player
 #####################################################################
 #Credits		:	gvbr : https://github.com/gvbr/core-fetch/blob/master/coresupdate.py
 #####################################################################
@@ -91,7 +93,7 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '2r MODIFICACION' $GAMELIST
+sed -i.bak '2r $MODIFICACION' $GAMELIST
 rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
