@@ -95,6 +95,7 @@ sleep 1
 
 sed -i.bak '/$SENAL/r que ya ' $GAMELIST
 sed -i.bak '2a\ joder Cabron ' $GAMELIST
+sed -i.bak '/gameList>/joder Cabron ' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
