@@ -96,7 +96,7 @@ a\
    <desc>Update all cores and assets or retroach.</desc>
 a\  
    <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
-c\
+a\
 </game>
 }' $GAMELIST
 
