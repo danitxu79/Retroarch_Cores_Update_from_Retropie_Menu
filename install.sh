@@ -93,7 +93,7 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/$SENAL/r $MODIFICACION' $GAMELIST
+sed -i.bak '/$SENAL/r que funfiones hostia!' $GAMELIST
 rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
