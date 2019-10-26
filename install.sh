@@ -93,13 +93,16 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak  '/$SENAL/ i\que ya' $GAMELIST
-echo "feo"
-sed -i.bak '2a\ joder Cabron ' $GAMELIST
-echo "mas"
-sed -i.bak '/gameList/ i\joder Cabron abajo ' $GAMELIST
-echo "speed"
-sed -i.bak /EOF/' i\ joder Cabron arriba 2 ' $GAMELIST
+
+sed -i.bak '{
+2a\ <game> 
+a\	  <path>./coresupdate.sh</path>
+a\    <name>Retroarch Cores Update</name>
+a\    <desc>Update all retroarch cores from Retropie menu.</desc>
+a\    <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
+a\  </game>
+}' $GAMELIST
+
 
 rm $HOME/gamelistmodif.xml
 
