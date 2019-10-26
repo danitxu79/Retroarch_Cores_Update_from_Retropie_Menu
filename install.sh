@@ -92,7 +92,7 @@ a\  <name>Cores and Assets update</name>
 a\  <desc>Update all cores and assets or retroach.</desc>
 a\  <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
 c\</game>
-}' GAMELIST
+}' $GAMELIST
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
