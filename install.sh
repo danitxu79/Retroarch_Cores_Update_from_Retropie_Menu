@@ -23,7 +23,7 @@ BLUE='\033[0;34m'
 WHITE='\033[1;37m'
 ORANGE='\033[0;33m'
 NC='\033[0m'
-
+ 
 clear
 echo -e " ${LRED}####################################${NC}"
 echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater${NC}  ${LRED}#${NC}"
