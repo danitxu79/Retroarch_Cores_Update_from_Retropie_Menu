@@ -95,9 +95,14 @@ sleep 1
 
 
 sed sed '/audiosettings/ {
-r MODIFICACION
+r $MODIFICACION
 d}' $GAMELIST
 sed -i.bak '/configedit.rp/ i\ <game>' $GAMELIST
+sed -i.bak '/configedit.rp/ i\   <path>./coresupdate.sh</path>' $GAMELIST
+sed -i.bak '/configedit.rp/ i\   <desc>Update all cores of Retroarch from Retropie menu</desc>' $GAMELIST
+sed -i.bak '/configedit.rp/ i\    <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
+' $GAMELIST
+sed -i.bak '/configedit.rp/ i\ </game>' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
