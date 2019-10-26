@@ -12,7 +12,7 @@
 #				:	bash install.sh
 #Author       	:	Daniel Serrano
 #####################################################################
-#Credits		:	gvbr : https://github.com/gvbr/core-fetch/blob/master/core-fetch.py
+#Credits		:	gvbr : https://github.com/gvbr/core-fetch/blob/master/coresupdate.py
 #####################################################################
 
 GREEN='\033[0;32m'
@@ -85,10 +85,10 @@ sleep 1
 
 sed -i.bak '/</gameList>/ {
 i\<game>
-a\  <path>./core-fetch.sh</path>
+a\  <path>./coresupdate.sh</path>
 a\  <name>Cores and Assets update</name>
 a\  <desc>Update all cores and assets or retroach.</desc>
-a\  <image>/home/pi/RetroPie/retropiemenu/icons/core-fetch.png</image>
+a\  <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
 c\</game>
 }'
 
