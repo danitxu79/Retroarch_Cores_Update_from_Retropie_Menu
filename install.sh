@@ -40,7 +40,7 @@ SCRIPTPATH=$(realpath $0)
 ########################
 ##remove older version##
 ########################
-echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}"
+echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}\n"
 rm $RPMENU/coresupdate.sh
 rm $RPMENU/coresupdate.py
 rm $RPMENU/icons/coresupdate.png
@@ -51,17 +51,17 @@ rm $RPMENU/icons/coresupdate.png
 #############################
 ##Packages and Dependencies##
 #############################
-echo -e "\n ${LRED}[${NC} ${LGREEN}Packages and Dependencies Installation${NC} ${LRED}]${NC}"
+echo -e "\n ${LRED}[${NC} ${LGREEN}Packages and Dependencies Installation${NC} ${LRED}]${NC}\n"
 sleep 1
 
 
-echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}"
+echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}\n"
 sleep 1
 
 pip install urllib3
 
 
-echo -e " ${LRED}--${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
+echo -e "\n ${LRED}-${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
 sleep 1
  
 
@@ -75,15 +75,15 @@ mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
 
-echo -e " ${LRED}-${NC}${WHITE} Download complete.${NC}"
+echo -e "\n ${LRED}-${NC}${WHITE} Download complete.${NC}"
 sleep 1
 
 cd $RP/roms/retropie
 
-echo -e " ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
+echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
-sed -i.bak '/</gameList>/ {
+sed -i .bak '/</gameList>/ {
 i\<game>
 a\  <path>./coresupdate.sh</path>
 a\  <name>Cores and Assets update</name>
