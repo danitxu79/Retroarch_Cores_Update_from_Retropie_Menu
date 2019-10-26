@@ -85,7 +85,7 @@ cd $RP/roms/retropie
 echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
-sed -i.bak '/$SENAL/ {
+sed -i.bak '/$SENAL/ -e {
 i\<game>
 a\   <path>./coresupdate.sh</path>
 a\   <name>Cores and Assets update</name>
