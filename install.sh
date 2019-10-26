@@ -86,12 +86,18 @@ echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
 sed -i.bak '/$SENAL/ {
-i\"<game>"
-a\  "<path>./coresupdate.sh</path>"
-a\  "<name>Cores and Assets update</name>"
-a\  "<desc>Update all cores and assets or retroach.</desc>"
-a\  "<image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>"
-c\"</game>"
+i\
+<game>
+a\  
+   <path>./coresupdate.sh</path>
+a\  
+   <name>Cores and Assets update</name>
+a\  
+   <desc>Update all cores and assets or retroach.</desc>
+a\  
+   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
+c\
+</game>
 }' $GAMELIST
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
