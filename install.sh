@@ -91,8 +91,8 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '2a/ "gamelistmodif.xml"' $GAMELIST
-rm gamelistmodif.xml
+sed -i.bak '2r MODIFICACION' $GAMELIST
+rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
