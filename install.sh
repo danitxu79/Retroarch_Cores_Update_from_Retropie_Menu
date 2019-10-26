@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.1${NC}${LRED}   #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.2${NC}${LRED}   #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -93,7 +93,7 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '/$SENAL/r que funfiones hostia!' $GAMELIST
+sed -i.bak '/gameList/c que funfiones hostia!' $GAMELIST
 rm $HOME/gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
