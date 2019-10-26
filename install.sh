@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.03${NC}${LRED} #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.04${NC}${LRED} #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -95,9 +95,9 @@ sleep 1
 
 
 sed sed '/audiosettings/ {
-r gamelistmodif.xml
+r MODIFICACION
 d}' $GAMELIST
-sed -i.bak '/configedit.rp/ i\ $MODIFICACION' $GAMELIST
+sed -i.bak '/configedit.rp/ i\ <game>' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
