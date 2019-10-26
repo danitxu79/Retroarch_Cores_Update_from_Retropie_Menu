@@ -7,7 +7,7 @@
 #Script Name	:	install.sh
 #Date			:	20191026	(YYYYMMDD)
 #Description	:	The installation script.
-#Usage			:	wget -N https://raw.githubusercontent.com/Naprosnia/RetroPie_BGM_Player/master/install.sh
+#Usage			:	wget -N https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu
 #				:	chmod +x install.sh
 #				:	bash install.sh
 #Author       	:	Daniel Serrano

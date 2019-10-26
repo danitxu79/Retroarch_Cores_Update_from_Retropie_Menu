@@ -11,6 +11,6 @@ repository based:
 
 Install:
 
-wget -N https://raw.githubusercontent.com/Naprosnia/RetroPie_BGM_Player/master/install.sh
+wget -N https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu
 chmod +x install.sh
 bash install.sh
