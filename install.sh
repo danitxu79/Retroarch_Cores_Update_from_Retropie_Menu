@@ -39,6 +39,7 @@ RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
 SENAL='</gameList>'
 MODIFICACION="$HOME/gamelistmodif.xml"
+
 SCRIPTPATH=$(realpath $0)
 
 ########################
@@ -89,20 +90,29 @@ cd $RP/roms/retropie
 echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
-#sed -i.bak '/$SENAL/{
-#r gamelistmodif.xml
-#d}' $GAMELIST
+ if [ -f ~/RetroPie/retropiemenu/gamelist.xml ]; then
+        cp ~/RetroPie/retropiemenu/gamelist.xml /tmp
+ else
+        cp /opt/retropie/configs/all/emulationstation/gamelists/retropie/gamelist.xml /tmp
+ fi
+ cat /tmp/gamelist.xml |grep -v "</gameList>" > /tmp/templist.xml
 
+ifexist=`cat /tmp/templist.xml |grep CoresUpdater |wc -l`
 
-sed sed '/audiosettings/ {
-r $MODIFICACION
-d}' $GAMELIST
-sed -i.bak '/configedit.rp/ i\ <game>' $GAMELIST
-sed -i.bak '/configedit.rp/ i\   <path>./coresupdate.sh</path>' $GAMELIST
-sed -i.bak '/configedit.rp/ i\   <desc>Update all cores of Retroarch from Retropie menu</desc>' $GAMELIST
-sed -i.bak '/configedit.rp/ i\    <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
-' $GAMELIST
-sed -i.bak '/configedit.rp/ i\ </game>' $GAMELIST
+if [[ ${ifexist} > 0 ]]; then 
+		echo "already in gamelist.xml" > /tmp/exists
+else
+	echo "	<game>" >> /tmp/templist.xml
+    echo "      <path>./coresupdate.sh</path>" >> /tmp/templist.xml
+    echo "      <name>Retroarch Cores Updater</name>" >> /tmp/templist.xml
+    echo "      <desc>Update all cores of Retroarch from Retropie menu</desc>" >> /tmp/templist.xml
+    echo "      <image>./icons/coresupdate.png</image>" >> /tmp/templist.xml
+    echo "      <playcount>1</playcount>" >> /tmp/templist.xml
+    echo "      <lastplayed></lastplayed>" >> /tmp/templist.xml
+    echo "  </game>" >> /tmp/templist.xml
+    echo "</gameList>" >> /tmp/templist.xml
+    cp /tmp/templist.xml ~/RetroPie/retropiemenu/gamelist.xml
+fi
 
 rm $HOME/gamelistmodif.xml
 
