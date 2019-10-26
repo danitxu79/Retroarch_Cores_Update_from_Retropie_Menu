@@ -26,7 +26,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.1${NC}${LRED}#${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.1${NC}${LRED}   #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -36,7 +36,7 @@ RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
 GAMELIST="$RP/roms/retropie/gamelist.xml"
 SENAL='/gameList'
-
+MODIFICACION="$HOME/gamelistmodif.xml"
 SCRIPTPATH=$(realpath $0)
 
 ########################
@@ -73,6 +73,8 @@ wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarc
 
 wget -N -q --show-progress "https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/raw/master/coresupdate.png"
 
+wget -N -q --show-progress "https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/gamelistmodif.xml"
+
 mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
@@ -89,7 +91,8 @@ sleep 1
 #r gamelistmodif.xml
 #d}' $GAMELIST
 
-sed -i.bak '2a/ gamelistmodif.xml' $GAMELIST
+sed -i.bak '2a/ "gamelistmodif.xml"' $GAMELIST
+rm gamelistmodif.xml
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
