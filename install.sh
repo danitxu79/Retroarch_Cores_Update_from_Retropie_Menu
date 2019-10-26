@@ -94,8 +94,8 @@ sleep 1
 #d}' $GAMELIST
 
 
-sed -i.bak '2r $gamelistmodif' $GAMELIST
-
+sed -i.bak '2a $gamelistmodif' $GAMELIST
+sed -i.bak '/configedit.rp/ i\ $gamelistmodif' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
