@@ -34,6 +34,8 @@ RP="$HOME/RetroPie"
 RPMENU="$RP/retropiemenu"
 RPSETUP="$HOME/RetroPie-Setup"
 RPCONFIGS="/opt/retropie/configs/all"
+GAMELIST="gameList.xml"
+SEÑAL="</gameList>"
 
 SCRIPTPATH=$(realpath $0)
 
@@ -83,14 +85,14 @@ cd $RP/roms/retropie
 echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
-sed -i.bak '/</gameList>/ {
+sed -i.bak '/$SEÑAL/ {
 i\<game>
 a\  <path>./coresupdate.sh</path>
 a\  <name>Cores and Assets update</name>
 a\  <desc>Update all cores and assets or retroach.</desc>
 a\  <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
 c\</game>
-}'
+}' GAMELIST
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
 sleep 1
