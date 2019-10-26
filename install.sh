@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.21${NC}${LRED} #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.01${NC}${LRED} #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -94,8 +94,8 @@ sleep 1
 #d}' $GAMELIST
 
 
-sed -i.bak '2a $gamelistmodif' $GAMELIST
-sed -i.bak '/configedit.rp/ i2\ $MODIFICACION' $GAMELIST
+sed -i.bak '2a gamelistmodif.XML' $GAMELIST
+sed -i.bak '/configedit.rp/ i\ ${MODIFICACION}' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
