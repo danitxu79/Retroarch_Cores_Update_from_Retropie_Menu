@@ -94,7 +94,7 @@ sleep 1
 #d}' $GAMELIST
 
 sed -i.bak '/$SENAL/c señal 1' $GAMELIST
-sed -i.bak '3r gamelistmodif.xml' $GAMELIST
+sed -i.bak '3r $HOME/gamelistmodif.xml' $GAMELIST
 
 rm $HOME/gamelistmodif.xml
 
