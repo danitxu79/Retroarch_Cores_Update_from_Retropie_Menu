@@ -86,18 +86,12 @@ echo -e "\n ${LRED}--${NC}${WHITE} Writing Gamelist.xml modifications...${NC}"
 sleep 1
 
 sed -i.bak '/$SENAL/ {
-i\
-<game>
-a\  
-   <path>./coresupdate.sh</path>
-a\  
-   <name>Cores and Assets update</name>
-a\  
-   <desc>Update all cores and assets or retroach.</desc>
-a\  
-   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
-a\
-</game>
+i\<game>
+a\   <path>./coresupdate.sh</path>
+a\   <name>Cores and Assets update</name>
+a\   <desc>Update all cores and assets or retroach.</desc>
+a\   <image>/home/pi/RetroPie/retropiemenu/icons/coresupdate.png</image>
+a\</game>
 }' $GAMELIST
 
 echo -e "\n ${LRED}[${NC}${LGREEN} Installation Finished ${NC}${LRED}]${NC}\n"
@@ -114,7 +108,7 @@ sleep 1
 	echo -e " ${LRED}-${NC}${WHITE} To finish, we need to reboot.${NC}${ORANGE}\n"
 	read -n 1 -s -r -p " Press any key to Restart."
 	echo -e "${NC}\n"
-	(rm -f $SCRIPTPATH; echo raspberry | sudo -S reboot)
+	(rm -f $SCRIPTPATH; echo raspberry | sudo -S reboote)
 	
 ########################
 ########################
