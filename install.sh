@@ -45,11 +45,11 @@ SCRIPTPATH=$(realpath $0)
 ########################
 
 echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}\n"
-rm $RPMENU/coresupdate.sh
+rm $RPMENU/coresupdate.sh >>/dev/null
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.sh...${NC}\n"
-rm $RPMENU/coresupdate.py
+rm $RPMENU/coresupdate.py >>/dev/nu
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.py...${NC}\n"
-rm $RPMENU/icons/coresupdate.png
+rm $RPMENU/icons/coresupdate.png >>/dev/nu
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.png...${NC}\n"
 
 ########################
