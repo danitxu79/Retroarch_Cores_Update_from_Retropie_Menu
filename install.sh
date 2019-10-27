@@ -88,12 +88,12 @@ mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
 
-if ( $EUID != 0 ) then echo "I am not root, perfect!"
-fi { echo "I am root, changing permissions to the files"
+if ( $EUID != 0 ) echo "I am not root, perfect!"
+then{ echo "I am root, changing permissions to the files"
        chown pi $RPMENU/coresupdate.sh
        chown pi $RPMENU/coresupdate.py
        chown pi $RPMENU/icons/coresupdate.png }
-
+fi 
 echo -e "\n ${LRED}-${NC}${WHITE} Download complete.${NC}"
 sleep 1
 
