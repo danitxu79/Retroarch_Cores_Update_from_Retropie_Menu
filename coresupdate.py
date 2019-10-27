@@ -45,6 +45,25 @@ if args.all:
     args.assets = True
     args.cores = True
 
+
+(echo raspberry | sudo -S apt-get install dialog -y)
+
+funcheck=( dialog --separate-output --menu "Retroarch Cores Actualizer" 0 0 0 1 "Update installed cores" 2 "I" 3 "Install all cores" 
+opciones=(1 "opción 1" on 
+ 2 "opción 2" off
+selecciones=$("${funcheck[@]}" "${opciones[@]}" 2>&1 >/dev/tty)
+
+clear
+
+do
+ case $seleccion in
+ 1)
+ echo "Escogiste la opción 1"
+ ;;
+ 2)
+ echo "Escogiste la opción 2"
+ ;;
+ 
 # asset names used in the buildbot and config file
 itemlist = {
     'assets'           : 'assets_directory',
