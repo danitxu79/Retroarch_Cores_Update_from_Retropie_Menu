@@ -48,52 +48,23 @@ if args.all:
 
 (echo raspberry | sudo -S apt-get install dialog -y)
 
-# while-menu-dialog: a menu driven system information program
+funcheck=( dialog --separate-output --menu "Retroarch Cores Actualizer" 0 0 0 1 "Update installed cores" 2 "I" 3 "Install all cores" 
+opciones=(1 "opción 1" on 
+ 2 "opción 2" off
+selecciones=$("${funcheck[@]}" "${opciones[@]}" 2>&1 >/dev/tty)
 
-DIALOG_CANCEL=1
-DIALOG_ESC=255
-HEIGHT=0
-WIDTH=0
+clear
 
-display_result() {
-  dialog --title "$1" \
-    --no-collapse \
-    --msgbox "$result" 0 0
-}
-
-while true; do
-  exec 3>&1
-  selection=$(dialog \
-    --backtitle "System Information" \
-    --title "Menu" \
-    --clear \
-    --cancel-label "Exit" \
-    --menu "Update all cores installaed:" $HEIGHT $WIDTH 4 \
-    "1" "update all installed cores\
-    "2" "Install and update all cores" \
-  exit_status=$?
-  exec 3>&-
-  case $exit_status in
-    $DIALOG_CANCEL)
-      clear
-      echo "Program terminated."
-      exit
-      ;;
-    $DIALOG_ESC)
-      clear
-      echo "Program aborted." >&2
-      exit 1
-      ;;
-  esac
-  case $selection in
-    0 )
-      clear
-      echo "Program terminated."
-      ;;
-    1 )
-      result=$(echo "Hostname: $HOSTNAME"; uptime)
-      display_result "SUpdate installed cores"
-      ;;# asset names used in the buildbot and config file
+do
+ case $seleccion in
+ 1)
+ echo "Escogiste la opción 1"
+ ;;
+ 2)
+ echo "Escogiste la opción 2"
+ ;;
+ 
+# asset names used in the buildbot and config file
 itemlist = {
     'assets'           : 'assets_directory',
     'autoconfig'       : 'joypad_autoconfig_dir',
@@ -143,9 +114,9 @@ with open(retroconfig, 'r') as tmpconf:
     for item in itemlist:
         itemlist[item] = pth.expanduser(conf['A'][itemlist[item]].strip('"'))
 
-    # get whole path of portable folders
-    if itemlist[item].startswith(':'):
-        itemlist[item] = pth.join(retrodir, itemlist[item].lstrip(':\\'))
+        # get whole path of portable folders
+        if itemlist[item].startswith(':'):
+            itemlist[item] = pth.join(retrodir, itemlist[item].lstrip(':\\'))
 
     # add subdirs to shaders' paths
     for shdr in ['shaders_cg', 'shaders_glsl', 'shaders_slang']:
@@ -159,8 +130,8 @@ with open(retroconfig, 'r') as tmpconf:
     corelist = sorted(os.listdir(coredir))
     conf.clear()
 
-    # download and extract archive to destination
-    def fetch_archive(url, dest):
+# download and extract archive to destination
+def fetch_archive(url, dest):
 
     # download
     with urllib.request.urlopen(url) as tmpdata:
@@ -176,8 +147,8 @@ with open(retroconfig, 'r') as tmpconf:
             origdate = time.mktime(member.date_time + (0, 0, -1)) - time.timezone
             os.utime(pth.join(dest, member.filename), (origdate, origdate))
 
-    # download and extract each core currently in retroarch's core directory
-    if args.cores:
+# download and extract each core currently in retroarch's core directory
+if args.cores:
     print('updating cores...')
 
     for core in corelist:
@@ -196,32 +167,6 @@ with open(retroconfig, 'r') as tmpconf:
             except Exception as excp:
                 print(' '*7, 'could not fetch file: %s' % core+'.zip')
                 print(' '*7, excp)
-
-    2 )
-      result=$(df -h)
-      display_result "Disk Space"
-      if [[ $(id -u) -eq 0 ]]; then
-        result=$(du -sh /home/* 2> /dev/null)
-        display_result "Home Space Utilization (All Users)"
-      else
-        result=$(du -sh $HOME 2> /dev/null)
-        display_result "Home Space Utilization ($USER)"
-      fi
-      ;;
-  esac
-done
-
-clear
-
-do
- case $seleccion in
- 1)
- echo "Escogiste la opción 1"
- ;;
- 2)
- echo "Escogiste la opción 2"
- ;;
-
 
 # download and extract each asset archive into their respective directories
 if args.assets:
