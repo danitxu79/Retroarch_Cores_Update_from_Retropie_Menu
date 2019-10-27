@@ -65,14 +65,14 @@ sleep 1
 echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}\n"
 sleep 1
 
-if  pip show urllib344 1&2>/dev/null 
-then echo 'urllib3 is already installed' 
-else echo 'urllib3 not installed, proceed to install now'  
-     echo ''
-	 pip install urllib3
-fi
+# if  pip show urllib344 1&2>/dev/null 
+# then echo 'urllib3 is already installed' 
+# else echo 'urllib3 not installed, proceed to install now'  
+     # echo ''
+	 # pip install urllib3
+# fi
 
-
+pip install urllib3 >>/dev/null
 
 echo -e "\n ${LRED}-${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
 sleep 1
@@ -88,13 +88,14 @@ mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
 
-if ! [ $(id -u) = 1 ]; 
-then echo "I am root, changing permissions to the files"
+if [ "$EUID" -ne 0 ]
+	then echo "I'm not root, perfect!"
+fi { echo "I am root, changing permissions to the files"
        chown pi $RPMENU/coresupdate.sh
        chown pi $RPMENU/coresupdate.py
-       chown pi $RPMENU/icons/coresupdate.png
-else  echo "I'm not root, perfect!"
-fi
+       chown pi $RPMENU/icons/coresupdate.png }
+
+
 
 echo -e "\n ${LRED}-${NC}${WHITE} Download complete.${NC}"
 sleep 1
