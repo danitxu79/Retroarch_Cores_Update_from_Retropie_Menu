@@ -11,6 +11,4 @@ repository based:
 
 Install:
 
-wget -N https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/install.sh
-chmod +x install.sh
-bash install.sh
+wget -N https://raw.githubusercontent.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu/master/install.sh| chmod +x install.sh | bash install.sh
