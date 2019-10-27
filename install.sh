@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.07 ${NC}${LRED} #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.01 ${NC}${LRED} #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
