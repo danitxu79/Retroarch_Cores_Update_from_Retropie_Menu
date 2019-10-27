@@ -4,12 +4,12 @@
 #Version		:	0.3
 #Git			:      https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu
 #####################################################################
-#Script Name	:	install.sh
+#Script Name	       :	install.sh
 #Date			:	20191026	(YYYYMMDD)
-#Description	:	The installation script.
+#Description	       :	The installation script.
 #Usage			:	wget -N https://github.com/danitxu79/Retroarch_Cores_Update_from_Retropie_Menu
-#				:	chmod +x install.sh
-#				:	bash install.sh
+#			:	chmod +x install.sh
+#			:	bash install.sh
 #Author       	:	Daniel Serrano
 #Script based 	:	Luis Torres aka Naprosnia
 #Git			:	https://github.com/Naprosnia/RetroPie_BGM_Player
@@ -43,10 +43,14 @@ SCRIPTPATH=$(realpath $0)
 ########################
 ##remove older version##
 ########################
+
 echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}\n"
 rm $RPMENU/coresupdate.sh
+echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.sh...${NC}\n"
 rm $RPMENU/coresupdate.py
+echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.py...${NC}\n"
 rm $RPMENU/icons/coresupdate.png
+echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.png...${NC}\n"
 
 ########################
 ########################
@@ -61,7 +65,12 @@ sleep 1
 echo -e " ${LRED}-${NC}${WHITE} Checking packages and dependencies...${NC}\n"
 sleep 1
 
-pip install urllib3
+if  pip show urllib3 2>/dev/null \ | grep -q '^.i $'; 
+then echo 'urllib3 is already installed' 
+else echo 'urllib3 not installed, proceed to install now'  
+     pip install urllib3
+fi
+
 
 
 echo -e "\n ${LRED}-${NC}${WHITE} Downloading system files...${NC}${ORANGE}\n"
@@ -77,6 +86,13 @@ wget -N -q --show-progress "https://github.com/danitxu79/Retroarch_Cores_Update_
 mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
+if (whoami != root)
+  then echo "I'm root, changing permissions to the files"
+       chown pi pi $RPMENU/coresupdate.sh
+       chown pi pi $RPMENU/coresupdate.py
+       chown pi pi $RPMENU/icons/coresupdate.png
+  else  echo "I'm not root, perfect!"
+fi
 
 echo -e "\n ${LRED}-${NC}${WHITE} Download complete.${NC}"
 sleep 1
