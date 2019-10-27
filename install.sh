@@ -47,9 +47,9 @@ SCRIPTPATH=$(realpath $0)
 echo -e " ${LRED}-${NC}${WHITE} Removing older versions...${NC}\n"
 rm $RPMENU/coresupdate.sh >>/dev/null
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.sh...${NC}\n"
-rm $RPMENU/coresupdate.py >>/dev/nu
+rm $RPMENU/coresupdate.py >>/dev/null
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.py...${NC}\n"
-rm $RPMENU/icons/coresupdate.png >>/dev/nu
+rm $RPMENU/icons/coresupdate.png >>/dev/null
 echo -e " ${LRED}-${NC}${WHITE} Removing coresupdate.png...${NC}\n"
 
 ########################
