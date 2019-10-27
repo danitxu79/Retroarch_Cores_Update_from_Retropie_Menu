@@ -88,7 +88,7 @@ mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
 
-if ( $EUID != 0 ) echo "I am not root, perfect!"
+if (( $EUID != 0 )) echo "I am not root, perfect!"
 then{ echo "I am root, changing permissions to the files"
        chown pi $RPMENU/coresupdate.sh
        chown pi $RPMENU/coresupdate.py
