@@ -28,7 +28,7 @@ NC='\033[0m'
  
 clear
 echo -e " ${LRED}####################################${NC}"
-echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.05${NC}${LRED} #${NC}"
+echo -e " ${LRED}#${NC}  ${GREEN}Installing CoresUpdater v.0.05 ${NC}${LRED} #${NC}"
 echo -e " ${LRED}####################################${NC}\n"
 
 
@@ -68,7 +68,8 @@ sleep 1
 if  pip show urllib3 2>/dev/null \ | grep -q '^.i $'; 
 then echo 'urllib3 is already installed' 
 else echo 'urllib3 not installed, proceed to install now'  
-     pip install urllib3
+     echo ''
+	 pip install urllib3
 fi
 
 
@@ -86,12 +87,13 @@ wget -N -q --show-progress "https://github.com/danitxu79/Retroarch_Cores_Update_
 mv coresupdate.sh $RPMENU/coresupdate.sh
 mv coresupdate.py $RPMENU/coresupdate.py
 mv coresupdate.png $RPMENU/icons/coresupdate.png
-if (whoami != root)
-  then echo "I'm root, changing permissions to the files"
+
+if ! [ $(id -u) = 0 ]; 
+then echo "I am root, changing permissions to the files"
        chown pi pi $RPMENU/coresupdate.sh
        chown pi pi $RPMENU/coresupdate.py
        chown pi pi $RPMENU/icons/coresupdate.png
-  else  echo "I'm not root, perfect!"
+else  echo "I'm not root, perfect!"
 fi
 
 echo -e "\n ${LRED}-${NC}${WHITE} Download complete.${NC}"
